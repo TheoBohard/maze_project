@@ -1,0 +1,14 @@
+Un main avec génération d'un tableau
+Une page de fonctions => mazeGenerator
+
+On génére le tableau (fait)
+on tire aleatoirement un cote ou aller on vérifie si on peut sinon on continu des qu'on est a chaque fois on check tout et 
+si tout a 1 on a fini :)
+struct maze ?
+enregistrement ?
+
+ADD STRUCT
+
+verify if its odd
+
+TODO : Verify if valeur is a digit on scanf
