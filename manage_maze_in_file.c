@@ -1,5 +1,6 @@
 #include "maze_function.h"
 #include "manage_maze_in_file.h"
+#include "menu.h"
 
 void save_maze_in_file(char * name, Maze_struct * maze_tab)
 {   
@@ -18,8 +19,6 @@ void save_maze_in_file(char * name, Maze_struct * maze_tab)
     strcat(file_path, name_file);
     strcat(file_path, name);
     strcat(file_path, extension); 
-
-    printf("Test : %s", file_path);
 
     maze_file = fopen(file_path,"w+");
 
@@ -86,8 +85,6 @@ Maze_struct * load_maze_from_file(char * name)
     }
 
     fscanf(maze_file, "%d,%d", &width_, &height_);
-
-    printf("W : %d/ H : %d", width_, height_);
     
     maze_tab = allocate_maze_memory(width_, height_);
 

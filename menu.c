@@ -1,11 +1,11 @@
 #include "maze_function.h"
 #include "menu.h"
-
-Maze_struct * my_maze_loaded;
+#include "play.h"
+#include "verify_user_entry.h"
 
 void display_menu()
 {
-    int action_choosed;
+    int action_choosed = 0;
 
     printf("Hello :)\n");
     printf("Welcome on this game :)\n");
@@ -14,7 +14,7 @@ void display_menu()
     printf("3. Play\n");
     printf("4. Exit\n");
 
-    scanf("%d",&action_choosed);
+    action_choosed = ask_int_to_user(action_choosed);
 
     choose_action(action_choosed);
 }
@@ -23,11 +23,8 @@ void choose_action(int action)
 {
     char name[50];
 
-    int width_;
-    int height_;
-
-    struct dirent * reading;
-    DIR * dir;
+    int width_ = 0;
+    int height_ = 0;
 
     Maze_struct * my_maze;
 
@@ -35,26 +32,23 @@ void choose_action(int action)
     {
         case 1:
             
-            printf("Please indicate the height of your maze which have to be odd ?\n");
-            scanf("%d",&width_);
             printf("Please indicate the width of your maze which have to be odd ?\n");
-            scanf("%d",&height_);
+            width_ = ask_int_to_user(width_);
+            width_ = verify_odd_value(width_);
+
+            printf("Please indicate the height of your maze which have to be odd ?\n");
+            height_ = ask_int_to_user(height_);
+            height_ = verify_odd_value(height_);
+
             printf("What is the name of the maze ?\n");
-            scanf("%s", &name);
-
-
-            if(height_%2 == 0 || width_ %2 == 0)
-            {
-                printf("\nPlease enter a correct value (ODD and DIGIT value)\n");
-                choose_action(1);
-            }
+            scanf("%s", name);
+            remove_char_from_string(name,'/');
+            remove_char_from_string(name,'\\');
 
             my_maze = allocate_maze_memory(width_, height_);
             my_maze->name = name;
             my_maze->width = width_;
             my_maze->height = height_;
-
-            printf("Name = %s \n", my_maze->name);
 
             generate_maze(my_maze);
             display_maze(my_maze);
@@ -68,18 +62,13 @@ void choose_action(int action)
         
         case 2 :
 
-            dir = opendir("./cfg_file/" );
-            while ((reading = readdir(dir))) 
-            {
-                printf("%s\n", reading->d_name);
-            }
-            closedir(dir);
+            list_directory("./cfg_file/");
 
             printf("\nYou can chose one of the game by writing the name between score_ and .cfg\n");
 
-            while (getchar() != '\n');
+            clear_buffer();
 
-            scanf("%s", &name);
+            scanf("%s", name);
 
             my_maze_loaded = load_maze_from_file(name);
 
@@ -92,11 +81,48 @@ void choose_action(int action)
             break;
             
         case 3:
-            play(my_maze_loaded);
+
+            if(my_maze_loaded == NULL)
+            {
+                printf("You have to load a maze ! \n");
+                display_menu();
+            }
+            else
+            {
+                display_maze(my_maze_loaded);
+                play(my_maze_loaded);
+            }
             break;
         default:
+            printf("Please enter a good value to choose your option on the menu \n");
             display_menu();
             break;
 
     }
+}
+
+void list_directory(char * path)
+{
+        struct dirent * reading;
+        DIR * directory;
+
+        directory = opendir(path);
+
+        printf("\n");
+
+        if(directory == NULL)
+        {
+            printf("The path you specified doesn't exist, please create cfg_file folder on the program folder\n");
+        }
+        
+        while ((reading = readdir (directory)) != NULL)
+        {
+
+            if(strstr(reading->d_name , ".cfg" ))
+            {
+                printf("%s\n", reading->d_name);
+            }
+        }
+            
+        closedir(directory);
 }

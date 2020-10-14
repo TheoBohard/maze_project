@@ -8,3 +8,5 @@
 
 void display_menu();
 void choose_action(int action);
+Maze_struct * my_maze_loaded;
+void list_directory(char * path);

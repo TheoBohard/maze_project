@@ -1,10 +1,14 @@
 #include "maze_function.h"
 #include "play.h"
+#include "menu.h"
 
 void play(Maze_struct * maze_tab)
 {
     char move;
     int maze_finished = 0;
+
+    if(maze_tab->maze[0] != 0)
+        display_menu();
 
     while(maze_finished == 0)
     {
@@ -110,7 +114,8 @@ void game_is_finish(Maze_struct * maze_tab)
        maze_tab->position_y == maze_tab->height - 2)
     {
         printf("The game is finished, you will go back to the menu\n");
-        
-        display_menu();
+        maze_tab->position_x = 0;
+        maze_tab->position_y = 1;
+        choose_action(5);
     }
 }
