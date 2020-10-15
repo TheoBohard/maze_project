@@ -9,7 +9,7 @@ void save_maze_in_file(char * name, Maze_struct * maze_tab)
 
     FILE * maze_file;
 
-    const char* name_file = "cfg_file/maze_score_";
+    const char* name_file = "cfg_file/maze_";
     const char* extension = ".cfg";
 
     char* file_path;
@@ -24,7 +24,7 @@ void save_maze_in_file(char * name, Maze_struct * maze_tab)
 
     if(maze_file == NULL)
     {
-        printf("Erreur d'ouverture du fichier de score");
+        printf("We can't open the maze file please retry the action!");
 
         display_menu();
     }
@@ -73,7 +73,7 @@ Maze_struct * load_maze_from_file(char * name)
 
     FILE * maze_file;
 
-    const char* name_file = "cfg_file/maze_score_";
+    const char* name_file = "cfg_file/maze_";
     const char* extension = ".cfg";
 
     char* file_path;
@@ -88,7 +88,7 @@ Maze_struct * load_maze_from_file(char * name)
 
     if(maze_file == NULL)
     {
-        printf("Erreur d'ouverture du fichier de score, le fichier n'existe pas");
+        printf("The maze you want to open don't exist");
 
         choose_action(2);
     }

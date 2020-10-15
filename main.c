@@ -21,9 +21,13 @@ int main(int argc, char *argv[])
 
     de score => de labyrinthe on the load
 
+    Create folder
+
     rajouter une option q en jeux
 
     when i display all file remove directory
+
+    Call the function calcul ranking, display ranking on win and display in a case in menu :)
     */
 
     return 0;

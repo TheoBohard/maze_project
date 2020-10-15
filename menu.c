@@ -2,6 +2,7 @@
 #include "menu.h"
 #include "play.h"
 #include "verify_user_entry.h"
+#include "ranking.h"
 
 void display_menu()
 {
@@ -22,6 +23,8 @@ void display_menu()
 void choose_action(int action)
 {
     char name[50];
+    char scorename[] = "premier";
+    char name_player[] = "JeSuisUnPersonnageTresFort";
 
     int width_ = 0;
     int height_ = 0;
@@ -100,6 +103,11 @@ void choose_action(int action)
 
         case 4:
             exit(1);
+            break;
+
+        case 5:
+            add_rank(scorename,name_player,-18);
+            display_rank(scorename);
             break;
 
         default:
