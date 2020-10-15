@@ -10,6 +10,7 @@ int main(int argc, char *argv[])
     free(my_maze);*/
     /*
     TODO : !!! Think to free the maze
+
     Verifiy all value is ok (odd/text)
     flush variable maze_loaded when the game is finish
     gerer toutes les entrée
@@ -17,7 +18,12 @@ int main(int argc, char *argv[])
     et le faire immediatement
     Si mauvais nom mettre un message explicite
     filtrer dossier . : ..
+
+    de score => de labyrinthe on the load
+
     rajouter une option q en jeux
+
+    when i display all file remove directory
     */
 
     return 0;

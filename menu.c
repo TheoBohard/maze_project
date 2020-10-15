@@ -54,6 +54,9 @@ void choose_action(int action)
             display_maze(my_maze);
 
             save_maze_in_file(name, my_maze);
+            free(my_maze);
+            my_maze = NULL;
+
             /* TODO : return the struct */
 
             display_menu();
@@ -92,7 +95,13 @@ void choose_action(int action)
                 display_maze(my_maze_loaded);
                 play(my_maze_loaded);
             }
+            
             break;
+
+        case 4:
+            exit(1);
+            break;
+
         default:
             printf("Please enter a good value to choose your option on the menu \n");
             display_menu();
@@ -125,4 +134,12 @@ void list_directory(char * path)
         }
             
         closedir(directory);
+}
+
+
+void free_struct()
+{
+    free(my_maze_loaded->maze);
+    free(my_maze_loaded);
+    my_maze_loaded = NULL;
 }

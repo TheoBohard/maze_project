@@ -76,11 +76,14 @@ void generate_maze(Maze_struct * maze_tab)
         }
     }
 
-    maze_tab->maze[maze_tab->width] = maze_tab->maze[maze_tab->width + 1];
-    maze_tab->maze[((maze_tab->width) * (maze_tab->height -1)) -1] = maze_tab->maze[maze_tab->width+1];
+    maze_tab->maze[maze_tab->width] = 1;
+    maze_tab->maze[((maze_tab->width) * (maze_tab->height -1)) -1] = 1;
 
     maze_tab->position_x = 0;
     maze_tab->position_y = 1;
+
+    generate_bonus(maze_tab,((maze_tab->height+maze_tab->width)/10));
+    generate_penalty(maze_tab,((maze_tab->height+maze_tab->width)/10));
 }
 
 void display_maze(Maze_struct * maze_tab)
@@ -100,12 +103,62 @@ void display_maze(Maze_struct * maze_tab)
             {
                 printf(" ");
             }
+            else if(maze_tab->maze[y*maze_tab->width+x] == -1)
+            {
+                printf("b");
+            }
+            else if(maze_tab->maze[y*maze_tab->width+x] == -2)
+            {
+                printf("m");
+            }
             else
             {
-                printf("#");
+                couleur("47");
+                printf(".");
+                couleur("40");
             }
         }
 
         printf("\n"); 
+    }
+}
+
+int generate_position(Maze_struct * maze_tab)
+{
+    int position_index;
+    srand(time(NULL));
+
+    position_index = 0;    
+
+    while(maze_tab->maze[position_index] <= 0 ||  position_index == maze_tab->width+1 
+        || position_index == ((maze_tab->width) * (maze_tab->height -1)) -1)
+    {
+        position_index = (rand() % (maze_tab->width*maze_tab->height - 0 + 1));
+    }
+
+    return position_index;
+}
+
+void generate_bonus(Maze_struct * maze_tab, int number)
+{
+    int aleatory_number;
+    int i;
+
+    for(i = 0; i < number; i++)
+    {
+        aleatory_number = generate_position(maze_tab);
+        maze_tab->maze[aleatory_number] = -1;
+    }
+}
+
+void generate_penalty(Maze_struct * maze_tab, int number)
+{
+    int aleatory_number;
+    int i;
+
+    for(i = 0; i < number; i++)
+    {
+        aleatory_number = generate_position(maze_tab);
+        maze_tab->maze[aleatory_number] = -2;
     }
 }

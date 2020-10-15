@@ -26,7 +26,7 @@ void save_maze_in_file(char * name, Maze_struct * maze_tab)
     {
         printf("Erreur d'ouverture du fichier de score");
 
-        exit(1);
+        display_menu();
     }
 
     fprintf(maze_file,"%d,%d\n",maze_tab->width, maze_tab->height);
@@ -39,12 +39,21 @@ void save_maze_in_file(char * name, Maze_struct * maze_tab)
             {
                 fprintf(maze_file,"%d", 1);
             }
-            if(maze_tab->maze[i*maze_tab->width+j] == 0)
+            else if(maze_tab->maze[i*maze_tab->width+j] == 0)
             {
                 fprintf(maze_file,"%d", 0);
             }
+            else if(maze_tab->maze[i*maze_tab->width+j] == -1)
+            {
+                fprintf(maze_file,"%d", 2);
+            }            
+            else if(maze_tab->maze[i*maze_tab->width+j] == -2)
+            {
+                fprintf(maze_file,"%d", 3);
+            }
             
-        }
+        }      
+
         fprintf(maze_file,"\n");
     }
 
@@ -100,6 +109,16 @@ Maze_struct * load_maze_from_file(char * name)
         for (j = 0; j < maze_tab->width; j++)
         {
             fscanf(maze_file, "%1d", &maze_tab->maze[i*maze_tab->width+j]);
+
+            if(maze_tab->maze[i*maze_tab->width+j] == 2)
+            {
+               maze_tab->maze[i*maze_tab->width+j] = -1; 
+            }
+            
+            if(maze_tab->maze[i*maze_tab->width+j] == 3)
+            {
+               maze_tab->maze[i*maze_tab->width+j] = -2; 
+            }
         }
     }
 
