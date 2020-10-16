@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define couleur(param) printf("\033[%sm",param)
+#define color(param) printf("\033[%sm",param)
 
 typedef struct Maze_struct
 {

@@ -174,7 +174,6 @@ void add_rank(char * name, char * name_player, int score)
 
     for(i = 0; i < lines; i++)
     {
-        printf("El value : %d, %s\n",rank[i]->score, rank[i]->name);
         fprintf(score_file,"%d,%s\n", rank[i]->score, rank[i]->name);
     } 
 

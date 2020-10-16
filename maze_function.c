@@ -113,9 +113,9 @@ void display_maze(Maze_struct * maze_tab)
             }
             else
             {
-                couleur("47");
+                color("47");
                 printf(".");
-                couleur("40");
+                color("40");
             }
         }
 

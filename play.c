@@ -111,13 +111,15 @@ void move_pos(Maze_struct * maze_tab, char move)
 
     if(maze_tab->maze[maze_tab->position_y*maze_tab->width+maze_tab->position_x] == -1)
     {
-        maze_tab->score -= rand() % 5 + 1;
+        /*maze_tab->score -= rand() % 5 + 1;*/
+        maze_tab->score -= 3;
         maze_tab->maze[maze_tab->position_y*maze_tab->width+maze_tab->position_x] = 1;
     }
 
     if(maze_tab->maze[maze_tab->position_y*maze_tab->width+maze_tab->position_x] == -2)
     {
-        maze_tab->score += rand() % 5 + 1;
+        /*maze_tab->score += rand() % 5 + 1;*/
+        maze_tab->score += 3;
         maze_tab->maze[maze_tab->position_y*maze_tab->width+maze_tab->position_x] = 1;
     }
 
