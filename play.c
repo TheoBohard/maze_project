@@ -1,6 +1,8 @@
 #include "maze_function.h"
 #include "play.h"
 #include "menu.h"
+#include "ranking.h"
+#include "verify_user_entry.h"
 
 void play(Maze_struct * maze_tab)
 {
@@ -129,11 +131,21 @@ void game_is_finish(Maze_struct * maze_tab)
     if(maze_tab->position_x == maze_tab->width - 1 && 
        maze_tab->position_y == maze_tab->height - 2)
     {
+        char player_name[50];
         printf("The game is finished, you will go back to the menu\n");
         maze_tab->position_x = 0;
         maze_tab->position_y = 1;
         /*Function display score into save score*/
         printf("Votre score est le suivant : %d\n", maze_tab->score);
+
+        printf("What is your name to save your score ?\n");
+        scanf("%s", player_name);
+        remove_char_from_string(player_name,'/');
+        remove_char_from_string(player_name,'\\');
+        
+        add_rank(maze_tab->name, player_name, maze_tab->score);
+        display_rank(maze_tab->name);
+
         maze_tab->score = 0;
 
         free_struct();

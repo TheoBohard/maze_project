@@ -23,8 +23,6 @@ void display_menu()
 void choose_action(int action)
 {
     char name[50];
-    char scorename[] = "premier";
-    char name_player[] = "JeSuisUnPersonnageTresFort";
 
     int width_ = 0;
     int height_ = 0;
@@ -106,8 +104,7 @@ void choose_action(int action)
             break;
 
         case 5:
-            add_rank(scorename,name_player,-18);
-            display_rank(scorename);
+            display_rank(my_maze_loaded->name);
             break;
 
         default:

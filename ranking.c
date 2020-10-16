@@ -1,14 +1,49 @@
 #include "ranking.h"
 #include "verify_user_entry.h"
 
+void create_empty_file(char * file_path)
+{
+    FILE * file;
 
-int count_line(FILE * file, char * file_path)
+    file = fopen(file_path, "w");
+    
+    fclose(file);
+}
+
+int check_file_exist(char * file_path)
+{
+    FILE * file;
+    
+    file = fopen(file_path, "r");
+    
+    if(file)
+    {
+        printf("file exist\n");
+        fclose(file);
+        return 1;
+    }
+    else
+    {
+        printf("file not exist\n");
+        return 0;
+    }
+}
+
+int count_line(char * file_path)
 {
     int ch;
     int lines = 0;
 
-    file = fopen(file_path,"r");
+    FILE * file;
 
+
+    if(!check_file_exist(file_path))
+    {
+        create_empty_file(file_path);
+    }
+
+    file = fopen(file_path, "r");
+    
     lines++;
 
     while ((ch = fgetc(file)) != EOF)
@@ -18,6 +53,8 @@ int count_line(FILE * file, char * file_path)
     }
 
     fclose(file);
+
+    printf("El lines : %d\n",lines);
 
     return lines;
 }
@@ -42,7 +79,7 @@ void display_rank(char * name)
     strcat(file_path, name);
     strcat(file_path, extension); 
     
-    lines = count_line(score_file, file_path);
+    lines = count_line(file_path);
 
     score_file = fopen(file_path,"r");
 
@@ -86,7 +123,7 @@ void add_rank(char * name, char * name_player, int score)
     strcat(file_path, name);
     strcat(file_path, extension); 
 
-    lines = count_line(score_file, file_path);
+    lines = count_line(file_path);
 
     for(i = 0; i < lines+1; i++)
     {
@@ -104,7 +141,7 @@ void add_rank(char * name, char * name_player, int score)
     for(i = 0; i < lines-1; i++)
     {
             fscanf(score_file, "%d,%s", &score_player, player_name);
-            if(player_name != "")
+            if(strcmp(player_name, ""))
             {
                 rank[i]->score = score_player;
                 rank[i]->name = malloc(sizeof(char)*strlen(player_name));
@@ -141,6 +178,7 @@ void add_rank(char * name, char * name_player, int score)
 
     for(i = 0; i < lines; i++)
     {
+        printf("El value : %d, %s\n",rank[i]->score, rank[i]->name);
         fprintf(score_file,"%d,%s\n", rank[i]->score, rank[i]->name);
     } 
 
