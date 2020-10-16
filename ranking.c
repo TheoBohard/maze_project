@@ -18,13 +18,11 @@ int check_file_exist(char * file_path)
     
     if(file)
     {
-        printf("file exist\n");
         fclose(file);
         return 1;
     }
     else
     {
-        printf("file not exist\n");
         return 0;
     }
 }
@@ -53,9 +51,7 @@ int count_line(char * file_path)
     }
 
     fclose(file);
-
-    printf("El lines : %d\n",lines);
-
+    
     return lines;
 }
 

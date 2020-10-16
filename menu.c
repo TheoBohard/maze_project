@@ -76,6 +76,8 @@ void choose_action(int action)
 
             my_maze_loaded = load_maze_from_file(name);
 
+            my_maze_loaded->name = name;
+
             display_maze(my_maze_loaded);
 
             printf("\n");
@@ -104,7 +106,17 @@ void choose_action(int action)
             break;
 
         case 5:
+        
+            if(my_maze_loaded == NULL)
+            {
+                printf("You have to load a maze ! \n");
+                display_menu();   
+            }
+            
             display_rank(my_maze_loaded->name);
+
+            display_menu();
+
             break;
 
         default:
