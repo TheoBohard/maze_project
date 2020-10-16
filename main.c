@@ -28,6 +28,11 @@ int main(int argc, char *argv[])
     when i display all file remove directory
 
     Call the function calcul ranking, display ranking on win and display in a case in menu :)
+
+
+    Figer la valeur des bonus/malus
+    Supprimer fichier de score si on recreer un labyrinthe de même nom (function de generation => call la supression si le fichier existe)
+
     */
 
     return 0;

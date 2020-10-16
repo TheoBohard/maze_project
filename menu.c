@@ -27,12 +27,16 @@ void choose_action(int action)
     int width_ = 0;
     int height_ = 0;
 
+    const char* name_file = "score_file/maze_";
+    const char* extension = ".score";
+    char* file_path;
+
     Maze_struct * my_maze;
 
     switch(action)
     {
-        case 1:
-            
+        case 1: 
+
             printf("Please indicate the width of your maze which have to be odd ?\n");
             width_ = ask_int_to_user(width_);
             width_ = verify_odd_value(width_);
@@ -57,6 +61,15 @@ void choose_action(int action)
             save_maze_in_file(name, my_maze);
             free(my_maze);
             my_maze = NULL;
+
+            
+            file_path = (char*)malloc(100*sizeof(char));
+
+            strcpy(file_path, name_file);
+            strcat(file_path, name);
+            strcat(file_path, extension);
+
+            create_empty_file(file_path);
 
             /* TODO : return the struct */
 
