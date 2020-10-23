@@ -1,3 +1,24 @@
+/*
+ * ENSICAEN
+ * 6 Boulevard Maréchal Juin
+ * F-14050 Caen Cedex
+ *
+ * This file is owned by ENSICAEN students. No portion of this
+ * document may be reproduced, copied or revised without written
+ * permission of the authors.
+ */
+
+/**
+ * @file main.c
+ * @author Théo BOHARD (theo.bohard@ecole.ensicaen.fr)
+ * @brief This file permit to display the menu and after manage and play with some maze
+ * @version 1.0
+ * @date 2020-10-23
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
+ 
 #include "maze_function.h"
 #include "menu.h"
 
@@ -5,35 +26,5 @@ int main(int argc, char *argv[])
 {   
 
     display_menu();
-
-    /*free(my_maze->maze);
-    free(my_maze);*/
-    /*
-    TODO : !!! Think to free the maze
-
-    Verifiy all value is ok (odd/text)
-    flush variable maze_loaded when the game is finish
-    gerer toutes les entrée
-    que ca ne plante pas (message d'erreur explicite)
-    et le faire immediatement
-    Si mauvais nom mettre un message explicite
-    filtrer dossier . : ..
-
-    de score => de labyrinthe on the load
-
-    Create folder
-
-    rajouter une option q en jeux
-
-    when i display all file remove directory
-
-    Call the function calcul ranking, display ranking on win and display in a case in menu :)
-
-
-    Figer la valeur des bonus/malus
-    Supprimer fichier de score si on recreer un labyrinthe de même nom (function de generation => call la supression si le fichier existe)
-
-    */
-
     return 0;
 }

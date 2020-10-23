@@ -1,3 +1,25 @@
+/*
+ * ENSICAEN
+ * 6 Boulevard Maréchal Juin
+ * F-14050 Caen Cedex
+ *
+ * This file is owned by ENSICAEN students. No portion of this
+ * document may be reproduced, copied or revised without written
+ * permission of the authors.
+ */
+
+ /**
+ * @file maze_function.c
+ * @author Théo BOHARD (theo.bohard@ecole.ensicaen.fr)
+ * @brief This file permit to manage the maze directly (generate maze/bonus/penalty and display maze)
+ * @version 1.0
+ * @date 2020-10-23
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
+
+
 #include "maze_function.h"
 
 Maze_struct * allocate_maze_memory(int height, int width)

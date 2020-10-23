@@ -12,3 +12,6 @@ ADD STRUCT
 verify if its odd
 
 TODO : Verify if valeur is a digit on scanf
+
+
+FREE THE MAZE
