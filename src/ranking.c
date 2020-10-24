@@ -85,7 +85,7 @@ void display_rank(char * name)
     int i;
     int lines = 0;
 
-    const char* name_file = "score_file/maze_";
+    const char* name_file = "./files/scores_files/maze_";
     const char* extension = ".score";
 
     char* file_path;
@@ -129,7 +129,7 @@ void add_rank(char * name, char * name_player, int score)
 
     FILE * score_file;
 
-    const char* name_file = "score_file/maze_";
+    const char* name_file = "./files/scores_files/maze_";
     const char* extension = ".score";
 
     char* file_path;

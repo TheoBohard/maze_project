@@ -1,36 +1,50 @@
+.PHONY: maze_prog clean doc help
+
 CC=gcc
-CFLAGS=-Wall -O -pedantic -ansi
-OBJS= main.o maze_function.o menu.o manage_maze_in_file.o play.o verify_user_entry.o ranking.o
+CFLAGS=-Wall -Wextra -pedantic -ansi
+CPPFLAGS = -I ./include/
+SRC_DIR = ./src
+OBJ_DIR = ./obj
+OBJS= $(addprefix $(OBJ_DIR)/, main.o maze_function.o menu.o manage_maze_in_file.o play.o verify_user_entry.o ranking.o)
 LDFLAGS=
 EXEC=maze_prog
 
 all: $(EXEC)
 
 ${EXEC}: ${OBJS}
-	mkdir -p cfg_file
-	mkdir -p score_file
+	make -p obj
+	make -p documentation
+	mkdir -p files
+	mkdir -p files/saves_files
+	mkdir -p files/scores_files
 	$(CC) $^ -o $@ ${LDFLAGS}
 
-main.o: main.c
-	$(CC) $(CFLAGS) $< -c
+$(OBJ_DIR)/main.o: $(SRC_DIR)/main.c
+	$(CC) $(CPPFLAGS) $(CFLAGS) $< -o $@ -c
 
-menu.o: menu.c menu.h
-	$(CC) $(CFLAGS) $< -c
+$(OBJ_DIR)/menu.o: $(SRC_DIR)/menu.c
+	$(CC) $(CPPFLAGS) $(CFLAGS) $< -o $@ -c
 
-manage_maze_in_file.o: manage_maze_in_file.c manage_maze_in_file.h
-	$(CC) $(CFLAGS) $< -c
+$(OBJ_DIR)/manage_maze_in_file.o: $(SRC_DIR)/manage_maze_in_file.c
+	$(CC) $(CPPFLAGS) $(CFLAGS) $< -o $@ -c
 
-play.o: play.c play.h
-	$(CC) $(CFLAGS) $< -c
+$(OBJ_DIR)/play.o: $(SRC_DIR)/play.c
+	$(CC) $(CPPFLAGS) $(CFLAGS) $< -o $@ -c
 
-verify_user_entry.o: verify_user_entry.c verify_user_entry.h
-	$(CC) $(CFLAGS) $< -c
+$(OBJ_DIR)/verify_user_entry.o: $(SRC_DIR)/verify_user_entry.c
+	$(CC) $(CPPFLAGS) $(CFLAGS) $< -o $@ -c
 
-ranking.o: ranking.c ranking.h
-	$(CC) $(CFLAGS) $< -c
+$(OBJ_DIR)/ranking.o: $(SRC_DIR)/ranking.c
+	$(CC) $(CPPFLAGS) $(CFLAGS) $< -o $@ -c
 
-maze_function.o: maze_function.c maze_function.h
-	$(CC) $(CFLAGS) $< -c
+$(OBJ_DIR)/maze_function.o: $(SRC_DIR)/maze_function.c
+	$(CC) $(CPPFLAGS) $(CFLAGS) $< -o $@ -c
 
 clean:
-	rm -f *.o core
+	rm -f ./obj/*.o core
+
+doc:
+
+
+help:
+	@echo "Usage: make {all|clean|doc|help}"

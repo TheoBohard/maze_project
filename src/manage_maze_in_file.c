@@ -31,7 +31,7 @@ void save_maze_in_file(char * name, Maze_struct * maze_tab)
 
     FILE * maze_file;
 
-    const char* name_file = "cfg_file/maze_";
+    const char* name_file = "./files/saves_files/maze_";
     const char* extension = ".cfg";
 
     char* file_path;
@@ -95,7 +95,7 @@ Maze_struct * load_maze_from_file(char * name)
 
     FILE * maze_file;
 
-    const char* name_file = "cfg_file/maze_";
+    const char* name_file = "./files/saves_files/maze_";
     const char* extension = ".cfg";
 
     char* file_path;

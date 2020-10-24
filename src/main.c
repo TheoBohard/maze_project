@@ -22,7 +22,7 @@
 #include "maze_function.h"
 #include "menu.h"
 
-int main(int argc, char *argv[])
+int main(void)
 {   
 
     display_menu();

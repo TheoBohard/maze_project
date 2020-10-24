@@ -48,7 +48,7 @@ void choose_action(int action)
     int width_ = 0;
     int height_ = 0;
 
-    const char* name_file = "score_file/maze_";
+    const char* name_file = "./files/scores_files/maze_";
     const char* extension = ".score";
     char* file_path;
 
@@ -100,7 +100,7 @@ void choose_action(int action)
         
         case 2 :
 
-            list_directory("./cfg_file/");
+            list_directory("./files/saves_files/");
 
             printf("\nYou can chose one of the game by writing the name between score_ and .cfg\n");
 
@@ -169,11 +169,6 @@ void list_directory(char * path)
         directory = opendir(path);
 
         printf("\n");
-
-        if(directory == NULL)
-        {
-            printf("The path you specified doesn't exist, please create cfg_file folder on the program folder\n");
-        }
         
         while ((reading = readdir (directory)) != NULL)
         {
