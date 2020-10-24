@@ -23,5 +23,20 @@
 #include <stdlib.h>
 #include <string.h>
 
+/**
+ * @brief This function permit to save a maze on a file
+ * 
+ * @param name This is the name of the maze to save
+ * @param maze_tab This is maze struct to save
+ */
+
 void save_maze_in_file(char * name, Maze_struct * maze_tab);
+
+/**
+ * @brief This function permit to load a maze from a file
+ * 
+ * @param name This is the name of the file to open
+ * @return Maze_struct* This is the Maze_struct struct to return
+ */
+ 
 Maze_struct * load_maze_from_file(char * name);

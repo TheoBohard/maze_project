@@ -15,3 +15,4 @@ TODO : Verify if valeur is a digit on scanf
 
 
 FREE THE MAZE
+Refactor the verify user entry and odd value and finish the doxygen of verify user entry

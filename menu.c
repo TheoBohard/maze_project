@@ -36,7 +36,7 @@ void display_menu()
     printf("3. Play\n");
     printf("4. Exit\n");
 
-    action_choosed = ask_int_to_user(action_choosed);
+    action_choosed = ask_int_to_user();
 
     choose_action(action_choosed);
 }
@@ -59,11 +59,11 @@ void choose_action(int action)
         case 1: 
 
             printf("Please indicate the width of your maze which have to be odd ?\n");
-            width_ = ask_int_to_user(width_);
+            width_ = ask_int_to_user();
             width_ = verify_odd_value(width_);
 
             printf("Please indicate the height of your maze which have to be odd ?\n");
-            height_ = ask_int_to_user(height_);
+            height_ = ask_int_to_user();
             height_ = verify_odd_value(height_);
 
             printf("What is the name of the maze ?\n");

@@ -23,7 +23,35 @@
 #include <stdlib.h>
 #include <string.h>
 
-int ask_int_to_user(int var);
+/**
+ * @brief This function permit to ask for a int to the user
+ * 
+ * @return int The value choosed by the user
+ */
+
+int ask_int_to_user();
+
+/**
+ * @brief This function permit to verify if the value is an odd value
+ * 
+ * @param var The value we want to check
+ * @return int A odd value variable
+ */
+
 int verify_odd_value(int var);
+
+/**
+ * @brief This function permit to clear the buffer
+ * 
+ */
+
 void clear_buffer();
+
+/**
+ * @brief This function permit to remove a specific char from a string
+ * 
+ * @param string The string on which we want to remove a char
+ * @param character The char we want to remove
+ */
+ 
 void remove_char_from_string(char * string, int character);

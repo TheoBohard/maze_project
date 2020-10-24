@@ -21,8 +21,10 @@
 
 #include "verify_user_entry.h"
 
-int ask_int_to_user(int var)
+int ask_int_to_user()
 {
+    int var;
+
     while(scanf("%d", &var) != 1)
     {
         printf("The value that you have enter is incorrect ! \n");
@@ -41,7 +43,7 @@ int verify_odd_value(int var)
     else
     {
         printf("The value is not an odd value ! \nPlease re-enter a odd value ! \n");
-        var = ask_int_to_user(var);
+        var = ask_int_to_user();
         var = verify_odd_value(var);
     }
 

@@ -27,9 +27,34 @@
 #include <dirent.h>
 #include "manage_maze_in_file.h"
 
+/**
+ * @brief This function permit to display the menu to manage/play on maze
+ * 
+ */
+
 void display_menu();
+
+/**
+ * @brief This function permit to choose one of the action displayed on the menu
+ * 
+ * @param action The hint of the action we want to choose
+ */
+
 void choose_action(int action);
+
+/**
+ * @brief This function permit to display the .cfg file on a directory
+ * 
+ * @param path The path of the folder we want to display
+ */
+
 void list_directory(char * path);
+
+/**
+ * @brief This function permit to free a Maze_struct struct
+ * 
+ */
+
 void free_struct();
 
 Maze_struct * my_maze_loaded;
