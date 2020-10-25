@@ -26,11 +26,10 @@
 /**
  * @brief This function permit to save a maze on a file
  * 
- * @param name This is the name of the maze to save
  * @param maze_tab This is maze struct to save
  */
 
-void save_maze_in_file(char * name, Maze_struct * maze_tab);
+void save_maze_in_file(Maze_struct * maze_tab);
 
 /**
  * @brief This function permit to load a maze from a file

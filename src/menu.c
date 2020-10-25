@@ -39,7 +39,7 @@ void display_menu()
     action_choosed = ask_int_to_user();
 
     choose_action(action_choosed);
-}
+} 
 
 void choose_action(int action)
 {
@@ -79,7 +79,7 @@ void choose_action(int action)
             generate_maze(my_maze);
             display_maze(my_maze);
 
-            save_maze_in_file(name, my_maze);
+            save_maze_in_file(my_maze);
             free(my_maze);
             my_maze = NULL;
 
@@ -91,8 +91,6 @@ void choose_action(int action)
             strcat(file_path, extension);
 
             create_empty_file(file_path);
-
-            /* TODO : return the struct */
 
             display_menu();
 
@@ -139,20 +137,6 @@ void choose_action(int action)
             exit(1);
             break;
 
-        case 5:
-        
-            if(my_maze_loaded == NULL)
-            {
-                printf("You have to load a maze ! \n");
-                display_menu();   
-            }
-            
-            display_rank(my_maze_loaded->name);
-
-            display_menu();
-
-            break;
-
         default:
             printf("Please enter a good value to choose your option on the menu \n");
             display_menu();
@@ -181,7 +165,6 @@ void list_directory(char * path)
             
         closedir(directory);
 }
-
 
 void free_struct()
 {

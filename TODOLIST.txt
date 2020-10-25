@@ -3,3 +3,9 @@ Refactor the verify user entry and odd value and finish the doxygen of verify us
 
 README REFACTOR THE FOLDERS
 WRITE THAT THE PROGRAM IS ONLY IN LINUX
+
+
+
+Présentation de ce que j'ai fait dans chaque partie 
+Page des différentes commandes make + arborescence
+tester sur cybele

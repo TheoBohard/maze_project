@@ -42,8 +42,6 @@ void generate_maze(Maze_struct * maze_tab)
     int cell1;
     int cell2;
 
-    srand(time(NULL));  
-
     for (i = 0; i < maze_tab->height; i++)
     {
         for (j = 0; j < maze_tab->width; j++)
@@ -55,12 +53,9 @@ void generate_maze(Maze_struct * maze_tab)
 
     wall_max = ((maze_tab->width - 1) * (maze_tab->height -1) /4) -1;
 
-    /* printf("Wall max : %d",wall_max); */
-
     while(wall_max != counter_break_wall)
     {
         row = (rand() % (maze_tab->height -2)) + 1;
-
 
         /* If cell is even we take a odd column */
         if(row%2 == 0)
@@ -70,7 +65,7 @@ void generate_maze(Maze_struct * maze_tab)
             cell2 = maze_tab->maze[(row - 1) * maze_tab->width + column];
         }
 
-            /* If cell is odd we take a even column */
+        /* If cell is odd we take a even column */
         else
         {
             column = rand() % ((maze_tab->width - 1) /2) * 2;
@@ -78,7 +73,7 @@ void generate_maze(Maze_struct * maze_tab)
             cell2 = maze_tab->maze[row * maze_tab->width + (column-1)];
         }
 
-        /* We verify if the cells1 and two are not already the same and if the celss is not equals to 0 who is a wall */
+        /* We verify if the cell1 and two are not already the same and if the cells is not equals to 0 which is a wall */
         if(cell1 != cell2 && cell1 != 0 && cell2 != 0)
         {
             maze_tab->maze[row*maze_tab->width+column] = cell2;

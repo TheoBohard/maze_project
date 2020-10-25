@@ -24,7 +24,7 @@
 #include "manage_maze_in_file.h"
 #include "menu.h"
 
-void save_maze_in_file(char * name, Maze_struct * maze_tab)
+void save_maze_in_file(Maze_struct * maze_tab)
 {   
     int i = 0;
     int j = 0;
@@ -39,7 +39,7 @@ void save_maze_in_file(char * name, Maze_struct * maze_tab)
     file_path = (char*)malloc(100*sizeof(char));
 
     strcat(file_path, name_file);
-    strcat(file_path, name);
+    strcat(file_path, maze_tab->name);
     strcat(file_path, extension); 
 
     maze_file = fopen(file_path,"w+");

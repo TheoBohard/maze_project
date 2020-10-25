@@ -92,3 +92,4 @@ void generate_bonus(Maze_struct * maze_tab, int number);
  */
 
 void generate_penalty(Maze_struct * maze_tab, int number);
+
