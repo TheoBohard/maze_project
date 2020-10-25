@@ -4,6 +4,7 @@ CC=gcc
 CFLAGS=-Wall -Wextra -pedantic -ansi
 CPPFLAGS = -I ./include/
 SRC_DIR = ./src
+OBJ_DIR_CREATE = ./obj
 OBJ_DIR = ./obj
 TEST_DIR = ./tests
 OBJS= $(addprefix $(OBJ_DIR)/, main.o maze_function.o menu.o manage_maze_in_file.o play.o verify_user_entry.o ranking.o)
@@ -14,8 +15,7 @@ EXEC2=test
 
 all: $(EXEC) $(EXEC2) doc
 
-${EXEC}: $(OBJ_DIR) ${OBJS}
-	mkdir -p obj
+${EXEC}: $(OBJ_DIR_CREATE) ${OBJS}
 	mkdir -p documentation
 	mkdir -p files
 	mkdir -p files/saves_files
@@ -43,8 +43,8 @@ $(OBJ_DIR)/ranking.o: $(SRC_DIR)/ranking.c
 $(OBJ_DIR)/maze_function.o: $(SRC_DIR)/maze_function.c
 	$(CC) $(CPPFLAGS) $(CFLAGS) $< -o $@ -c
 
-$(EXEC2): $(OBJ_DIR) $(OBJS_TEST)
-	$(CC) ${OBJS} -o $@ ${LDFLAGS}
+$(EXEC2): $(OBJ_DIR_CREATE) $(OBJS_TEST)
+	$(CC) ${OBJS_TEST} -o $@ ${LDFLAGS}
 
 $(OBJ_DIR)/test_maze.o: $(TEST_DIR)/test_maze.c
 	$(CC) $(CPPFLAGS) $(CFLAGS) $< -o $@ -c
