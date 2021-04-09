@@ -1,6 +1,8 @@
 # maze_project
 **This is a maze game project for the courses "Introduction to programming" project at ensicaen in C**
 
+*This program work only on linux environment*
+
 The differents make command are  : 
 
 * MAKE ALL	Call make maze et make test.
